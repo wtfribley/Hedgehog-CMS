@@ -1,0 +1,13 @@
+<section class="admin-projects admin-main">
+    <h1 class="colored-heading green">Projects</h1><br />
+    
+    <ul class="thumbnails gallery cf">
+<?php   foreach($this->projects as $p) {
+            $p->the('thumbnail',array(
+                'clicktext'=>'click to edit',
+                'target'=>'/projects/' . $p->the('slug')
+            )); 
+        } ?>
+    </ul>
+    
+</section> <!-- admin-projects admin-main -->

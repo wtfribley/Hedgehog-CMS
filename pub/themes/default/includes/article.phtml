@@ -1,0 +1,87 @@
+<section class="articles">
+
+<?php if (!empty($posts)) {
+
+// Auto-magically display either a single page or a page w/ multiple posts
+
+(count($posts) > 1 || Template::Pagetype() == 'project') ? $contenttype = 'excerpt' : $contenttype = 'content';
+
+// Loop through posts
+
+foreach($posts as $p) { 
+
+// Don't Display if they're in the Trash!
+if ($p->the('status') != 'trash') { ?>
+    
+<article>
+<aside class="post-info">
+    <strong class="serif"><?= $p->the('date'); ?></strong><br />
+    <em class="serif"><?= $p->the('time'); ?></em>
+<?php 
+
+// Check for associated categories, and display them in a list
+
+if ($p->has('categories')) { ?>
+    
+    <h3>categories</h3>
+    <ul class="unstyled">
+    <?php foreach ($p->the('categories') as $category => $id) { ?>
+        <li><a href="/categories/<?= Template::MakeSlug($category); ?>" alt="<?= $category; ?>"><?= $category; ?></a></li>
+    <?php } /** end category foreach **/ ?>
+    </ul>
+    <?php } /** end if has categories **/
+
+// Check for associated projects, and display them in a list    
+    
+if ($p->has('project')) { ?>
+    
+    <h3>project</h3>
+    <ul class ="unstyled">
+    <?php foreach ($p->the('projects') as $title => $slug) { ?>
+        <li><a href="/projects/<?= $slug; ?>" alt="<?= $title; ?>"><?= $title; ?></a></li>
+    <?php } /** end project foreach **/ ?>
+    </ul>
+    <?php } /** end if has projects **/ ?>
+    
+</aside>
+    
+<div class="article-content">
+    <h1><a href="<?= HOST ?>/posts/<?= $p->the('slug'); ?>" title="<?= $p->the('title'); ?>"><?= $p->the('title'); ?></a>
+    <?php if (User::Verify('admin')) { ?>
+        <span class="label post-status pull-right"><?= $p->the('status'); ?></span>
+    <?php } ?>
+    </h1>
+    <?= $p->the($contenttype); ?>
+    <div class="article-more">
+<?php 
+
+// If we're just showing an excerpt, we need the "Continue Reading" link
+
+if ($contenttype == 'excerpt') { ?>
+        
+        <a class="continue-link" href="<?= HOST ?>/posts/<?= $p->the('slug'); ?>" title="Continue Reading">Continue reading &nbsp;&raquo;</a>
+        <?php } ?>
+        
+    </div>
+    <hr />
+</div>
+    
+</article>
+<?php } /** end if not in trash **/
+    } /** end post foreach **/
+} // end if !empty $posts
+else
+{ ?>
+
+<article>
+    
+    <div class="article-content">
+        <h1>There Are No Related Articles</h1>
+    </div>
+    
+</article>
+
+<?php }
+?>
+    
+</section> <!-- articles -->

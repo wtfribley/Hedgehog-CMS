@@ -1,0 +1,57 @@
+<?php require Template::GetPath() . 'header.phtml'; ?>
+
+<section class="admin-top-bar">
+    <div class="pull-right">
+        <span>Hello <strong><?= $this->user->the('realname'); ?>!</strong></span>
+        <a href="/admin/logout" alt="Log Out"><button class="btn">Log Out</button></a>
+    </div>
+</section>
+
+<table class="table admin" data-current-page="<?= $page; ?>">
+
+<tr>
+    
+<td class="admin-leftnav">
+    
+    <ul class="nav nav-list">
+        <li class="nav-header"><a href="/admin/dashboard" alt="Dashboard" data-page="dashboard"><i class="icon-home"></i> Dashboard</a></li>
+        
+        <hr />
+        
+        <li class="nav-header nav-group"><a href="/admin/posts" alt="Posts" data-page="posts"><i class="icon-edit"></i> Posts</a><a href="/admin/newpost" title="New Post"><i class="icon-plus-sign"></i></a></li>
+        
+        <li class="nav-header nav-group"><a href="/admin/projects" alt="Projects" data-page="projects"><i class="icon-edit"></i> Projects</a><a href="/admin/newproject" title="New Project"><i class="icon-plus-sign"></i></a></li>
+        
+        <li class="nav-header"><a><i class="icon-list"></i> Categories</a></li>
+        
+        <li class="nav-header"><a><i class="icon-tags"></i> Tags</a></li>
+        
+        <li class="nav-header"><a><i class="icon-comment"></i> Comments</a></li>
+        
+        <hr />
+        
+        <li class="nav-header">Accounts</li>
+        <li><a><i class="icon-user"></i> <?= $this->user->the('realname'); ?></a></li>
+    </ul>
+        
+<script>
+    $(document).ready(function(){
+        var page = $("table.admin").attr('data-current-page');
+        
+        $('td.admin-leftnav').find('a[data-page="' + page + '"]').addClass('active');
+    });
+</script>
+
+</td><td>
+        
+<?php include $page . ".phtml"; // Include the proper page - set in the Admin Controller ?>
+
+</td></tr>
+    
+</table> <!-- admin -->    
+    
+</section> <!-- main -->
+
+</body>
+
+<?php require Template::GetPath() . 'footer.phtml'; ?>

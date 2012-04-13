@@ -1,0 +1,66 @@
+
+--------------------------------------------------------------
+--------------------------------------------------------------
+----HHH    HHH--EEEEEEEE--DDDDDD--------GGGGGGG---EEEEEEEE----
+-----HH    HH----EE--------DD  DDD-----GGG    GG---EE---------
+-----HH    HH----EE--------DD    DDD--GG	---EE---------
+-----HHHHHHHH----EEEEE-----DD     DD--GG    GGGG---EEEEE------
+-----HH    HH----EE--------DD    DDD--GG      GG---EE---------
+-----HH    HH----EE--------DD  DDD-----GGG    GG---EE---------
+----HHH    HHH--EEEEEEEE--DDDDDD--------GGGGGGG---EEEEEEEE----
+--------------------------------------------------------------
+--------------------------------------------------------------
+----HHH    HHH----OOOOO------GGGGGGG-------------------------- 
+-----HH    HH----OO   OO----GGG    GG-------------------------
+-----HH    HH---OO     OO--GG        -------------------------
+-----HHHHHHHH---OO     OO--GG    GGGG-------------------------
+-----HH    HH---OO     OO--GG      GG-------------------------
+-----HH    HH----OO   OO----GGG    GG-------------------------
+----HHH    HHH----OOOOO------GGGGGGG--------------------------
+--------------------------------------------------------------
+--------------------------------------------------------------
+
+
+#######################################
+###				      ###
+###	HEDGEHOG DEVELOPMENT ROADMAP	###
+###					  ###
+###############################################
+
+V1.0
+=====================
+Basic Functionality
+---------------------
+-  Posts
+-  Projects
+-  Categories
+-  Comments
+-  Simple Account Management
+
+V1.1
+=====================
+Added Functionality
+---------------------
+-  Tags
+-  Clean up Template class
+-  Navigation Improvements
+    -  Admin Navigation more intuitive, accessible
+-  Footer Redesign
+
+V1.5
+=====================
+Advanced Functionality
+---------------------
+-  Admin Dashboard is a full AJAX Web App
+     -  Build an AJAX MVC Structure mirroring
+	its counterpart in the PHP.
+-  Fully Implemented Multiple Users
+     -	User ranking determines access level.
+
+V??
+=====================
+Future Functionality
+---------------------
+-  Flux Capacitor
+     -	Requires 1.21 gigawatts
+ 

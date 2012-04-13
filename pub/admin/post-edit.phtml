@@ -1,0 +1,101 @@
+<?php require Template::GetPath() . 'header.phtml';
+
+// We'll only be editing one post at a time.
+
+$p = $posts[0];
+
+?>
+<section class="edit-hud">
+    <h1><?= strtolower($p->the('title')); ?>
+        <?= $p->the('statuspicker'); ?>
+    </h1>
+    <div class="expander" data-toggle="collapse" data-target=".edit-hud-extras">
+        <a class="on-black"><h3><i class="icon-plus icon-white"></i> &nbsp;<strong>more info</strong></h3></a>
+    </div>
+    <div class="collapse edit-hud-extras">
+        <hr class="on-black" />
+        <p>Here's where I'll put some info about this post...</p>
+        <p>Maybe the number of comments and if any are awaiting approval - along with a way to disable comments for this post.</p>
+        <hr class="on-black" />
+    </div>
+    <a class="pull-right" href="/admin/posts" alt="All Posts"><button class="btn btn-primary">All Posts</button></a>
+</section>
+
+<section class="editor-controls btn-toolbar">
+    <div data-editor-group="style" class="btn-group">
+	<button data-edit-action="strong" class="btn btn-small"><strong>B</strong></button>
+	<button data-edit-action="em" class="btn btn-small"><em>i</em></button>
+    </div>
+    <div data-editor-group="align" class="btn-group">
+	<button data-edit-action="align-left" class="btn btn-small"><i class="icon-align-left"></i></button>
+	<button data-edit-action="align-center" class="btn btn-small"><i class="icon-align-center"></i></button>
+	<button data-edit-action="align-right" class="btn btn-small"><i class="icon-align-right"></i></button>
+	<button data-edit-action="align-justify" class="btn btn-small"><i class="icon-align-justify"></i></button>
+    </div>
+    <div data-editor-group="formatting" class="btn-group">
+	<button data-edit-action="p" class="btn btn-small"><strong>p</strong></button>
+	<button data-edit-action="h1" class="btn btn-small"><strong>h1</strong></button>
+	<button data-edit-action="h2" class="btn btn-small"><strong>h2</strong></button>
+	<button data-edit-action="h3" class="btn btn-small"><strong>h3</strong></button>
+	<button data-edit-action="h4" class="btn btn-small"><strong>h4</strong></button>
+    </div>
+    <div data-editor-group="inserts" class="btn-group">
+	<button data-edit-action="link" class="btn btn-small">link</button>
+	<button data-edit-action="image" class="btn btn-small">image</button>
+    </div>
+    <div data-editor-group="publishing" class="btn-group">
+	<button data-edit-action="view-source" class="btn btn-small">html</button>
+	<button data-edit-action="publish" data-publish-url="<?= HOST; ?>/index" class="btn btn-success btn-small">publish</button>
+    </div>
+    <div class="popover top textcenter"><div class="arrow"></div><div class="popover-inner">
+        <h4 class="popover-title">Click Here to Confirm</h4>
+    </div></div></div>
+</section>
+
+<section class="articles">
+
+<article id="<?= $p->the('id'); ?>">
+<aside class="post-info">
+    <div class="post-datetime" data-datetime="<?= $p->the('rawdatetime'); ?>">
+        <strong class="serif"><?= $p->the('date'); ?></strong><br />
+        <em class="serif"><?= $p->the('time'); ?></em><br />
+        <span class="btn btn-small btn-primary">change?</span>
+    </div>
+    
+    <h3>categories</h3>
+    <ul class="unstyled">
+    <?php foreach ($p->the('categories') as $category => $id) { ?>
+        <li><a id="<?= $id; ?>" class="post-category" alt="<?= $category; ?>"><?= $category; ?></a></li>
+    <?php } /** end category foreach **/ ?>
+        <li><input class="post-category-add input-small" type="text" placeholder="add category" data-provide="typeahead" /></li>
+    </ul>
+    
+    <h3>project</h3>
+    <ul class ="unstyled">
+    <?php foreach ($p->the('projects') as $title => $slug) { ?>
+        <li><a id="<?= $slug; ?>" class="post-project" alt="<?= $title; ?>"><?= $title; ?></a></li>
+    <?php } /** end project foreach **/ ?>
+        <li><input class="post-project-add input-small" type="text" placeholder="add project" data-provide="typeahead" /></li>
+    </ul>
+    
+</aside>
+    
+<div class="article-content">
+    <h1 data-rte-field="title" contenteditable="true" data-editable-controls="style"><?= $p->the('title'); ?></h1>
+    <div data-rte-field="content" contenteditable="true" data-editable-controls="all"><?= $p->the('content'); ?></div>
+    <div class="article-more">
+    </div>
+    <hr />
+</div>
+        
+</article>
+    
+</section> <!-- articles -->
+
+<?php include Template::GetPath() . 'includes/blog-info.phtml'; ?>
+
+</section> <!-- main -->
+
+</body>
+
+<?php require Template::GetPath() . 'footer.phtml'; ?>

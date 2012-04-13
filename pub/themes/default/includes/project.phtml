@@ -1,0 +1,24 @@
+<section class="project" data-project-id="<?= $project->the('id'); ?>">
+    <div class="project-media-container"><?= $project->the('content'); ?></div>
+    <section class="project-info">
+<?php if (Template::Pagetype() == 'project') { ?>
+        
+        <h2><?= $project->the('title'); ?></h2>
+        
+<?php } else { ?>
+        
+        <h2><a href="/projects/<?= $project->the('slug'); ?>" title="<?= $project->the('title'); ?>"><?= $project->the('title'); ?></a></h2>
+        
+<?php } ?>
+        <h6 style="margin-top: -10px;"><?= $project->the('roles'); ?></h6>
+        
+        <?= $project->the('description'); ?>
+        <hr />
+        
+<?php if (Template::Pagetype() != 'project') { ?>
+        
+        <a href="/projects/<?= $project->the('slug'); ?>" title="View the Project's Page">view this project's page...</a>
+        
+<?php } ?>
+    </section>
+</section>

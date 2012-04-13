@@ -1,0 +1,33 @@
+<?php require Template::GetPath() . 'header.phtml'; ?>
+    
+<section class="form-login">
+    
+    <h1>Log In</h1>
+      
+    <form class="ajax-form" method="post" action="login" data-submit-url="<?= HOST; ?>/index">
+        <fieldset>
+            <div id="username-group" class="control-group">
+                <input type="text" placeholder="Username" name="username" data-required="required" autofocus="autofocus"/>
+            </div>
+            <div id="password-group" class="control-group">
+                <input type="password" placeholder="Password" name="password" data-required="required" />
+            </div>
+        </fieldset>       
+        <input class="btn" type="submit" value="Log In" />
+    </form>
+    <div class="alert alert-error ajax-alert-msg">       
+    </div>
+    
+</section>
+
+<script>
+    $(document).ready(function(){
+        $('input[type="text"]').first().focus();
+    });
+</script>
+    
+</section> <!-- main -->
+
+</body>
+
+<?php require Template::GetPath() . 'footer.phtml'; ?>

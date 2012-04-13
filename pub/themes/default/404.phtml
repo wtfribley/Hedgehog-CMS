@@ -1,0 +1,21 @@
+<?php require 'header.phtml'; ?>
+
+<section class="articles">
+    
+    <article>
+    <div class="article-content">
+        <h1>404, bitches</h1>
+        <p>There doesn't seem to a <?= $this->pagetype; ?> with this slug: "<?php if (property_exists($this, 'slug')) { echo $this->slug; } else { echo $this->category; } ?>"</p>
+        <a href="/blog" title="Back to the Blog!">Back to the Blog!</a>
+    </div>
+    </article>
+    
+</section> <!-- articles -->
+
+<?php include 'includes/blog-info.phtml' ?>
+    
+</section> <!-- main -->
+    
+</body>
+
+<?php require 'footer.phtml'; ?>

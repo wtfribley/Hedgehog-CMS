@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weston Fribley<?php Template::Title(); ?></title>
+        
+        <?php   Template::Charset();
+                Template::HeadInclude('utils');
+                Template::HeadInclude('http://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600');
+                Template::HeadInclude(); // this loads every file in the theme's js and css directories.
+        ?>
+    </head>
+    
+    <body onload="prettyPrint()" data-pagetype="<?= Template::Pagetype(); ?>">
+
+<div id="top-bar"></div>
+
+<?php 
+// This is a bit of unnecessary fanciness - this fades in the site if it's
+// a user's first visit to the site.
+if (Session::get('pageCount') == 1) { ?>
+<script>
+    $(document).ready(function() {
+        $('body').css({opacity:0}).animate({opacity:1}, 1000);
+    });
+</script><?php } ?>
+
+<section class="main">
+    
+    <header>
+        <a href="<?= HOST ?>/"><img src="<?= Template::GetPath('web'); ?>/img/logo-big.png" alt="Weston Fribley" title="Weston Fribley" /></a>    
+        <nav>
+            <ul class="unstyled floated-list">
+                <li><a class="hover-red" href="<?= HOST ?>/#work"><span>w</span>ork</a></li><li>/</li>
+                <li><a class="hover-blue" href="<?= HOST ?>/blog"><span>b</span>log</a></li><li>/</li>             
+                <li><a class="hover-green" href="<?= HOST ?>/#about"><span>a</span>bout</a></li><li>/</li>
+                <li><a class="hover-gray" href="<?= HOST ?>/#contact"><span>c</span>ontact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <script>
+        $(document).ready(function() {
+            setActiveNav();
+        });
+        
+        $(window).bind('hashchange', function(){
+            setActiveNav();
+        });
+        
+        function setActiveNav() {
+            var url = window.location.href;
+            var pagetype = $('body').attr('data-pagetype');
+            if (pagetype == 'post' || pagetype == 'project' || pagetype == 'category') { pagetype = 'blog'; }
+            
+            $('header nav li').has('a').removeClass('active').each(function() {
+                var text = $(this).text();
+                if (url.indexOf(text) >= 0 || pagetype.indexOf(text) >= 0) { $(this).addClass('active'); }
+            });
+        }
+    </script>

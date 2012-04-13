@@ -1,0 +1,29 @@
+<section class="blog-info">
+    
+    <form id="blog-search" method="post" action="">
+        <div class="input-append">           
+            <input type="text" class="form-search" placeholder="type and hit enter..." />
+            <span class="add-on"><i class="icon-search"></i></span>
+        </div>
+    </form>
+    
+    <section class="blog-nav">
+        <h2>all categories</h2>
+        <ul class="unstyled">
+        <?php foreach (Template::CategoryList() as $category => $count) { ?>
+            <li><a href="/categories/<?= Template::MakeSlug($category); ?>" alt="<?= $category; ?>"><?= $category; ?></a> &nbsp;(<?= $count; ?>)</li>
+        <?php } /** end category list foreach **/ ?>
+        </ul>    
+        <hr />
+        
+        <h2>all projects</h2>
+        <ul class="unstyled">
+        <?php foreach (Template::ProjectList() as $title => $slug) { ?>
+            <li><a href="/projects/<?= $slug; ?>" alt="<?= $title; ?>"><?= $title; ?></a></li>
+        <?php } /** end project list foreach **/ ?>
+        </ul>
+        <hr />
+        
+    </section>
+    
+</section> <!-- blog-info -->

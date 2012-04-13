@@ -1,0 +1,22 @@
+<?php require Template::GetPath() . 'header.phtml'; ?>
+    
+<section class="form-register">
+    
+    <h1>Register New Admin</h1>
+    
+    <form class="ajax-form" method="post" action="register" data-form-url="<?= HOST; ?>/index">
+        <fieldset class="block-inputs">
+            <input type="text" placeholder="Username" name="username" />
+            <input type="password" placeholder="Password" name="password"/>
+            <input id="test" type="password" placeholder="Confirm Password" name="confirmpass"/>
+        </fieldset>
+        <input class="btn" type="submit" value="Register" />
+    </form>
+    
+</section> <!-- form-register -->
+    
+</section> <!-- main -->
+
+</body>
+
+<?php require Template::GetPath() . 'footer.phtml'; ?>

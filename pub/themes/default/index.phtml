@@ -1,0 +1,47 @@
+<?php require 'header.phtml'; ?>   
+    
+    <img id="about-img" src="<?= Template::GetPath('web'); ?>/img/about.jpg" alt="About Me" title="About Me - Video Soon!" />
+    
+    <a name="work"></a>
+    <h1 class="colored-heading red">work</h1>
+    
+    <ul class="thumbnails gallery">
+<?php   foreach($projects as $p) {
+            $p->the('thumbnail',array(
+                'target'=>'.gallery-content'
+            )); 
+        } ?>
+        <div class="gallery-content pull-left">
+
+        </div>
+    </ul>    
+    
+    <a name="about"></a>
+    <h1 class="colored-heading green">about</h1>
+    <div class="hero-unit">
+        <h1>My name is <small>Inigo Montoya...</small></h1>
+        <br />
+        <h2>You killed my father. Prepare to die.</h2>
+        <h2>Just kidding.</h2>
+        <br />
+        <h2>I love movies. And I love making things that are simple and effective. Like this.</h2>
+    </div>
+    
+    <a name="contact"></a>
+    <h1 class="colored-heading">contact</h1>
+    <section class="contact cf">
+        <h1>email or connect with me on one of these social networks.</h1>
+        <ul class="unstyled">
+            <li class="contact-email"></li>
+            <li class="contact-twitter"></li>
+            <li class="contact-vimeo"></li>
+            <li class="contact-github"></li>
+        </ul>
+        <h1>me[at]westonfribley[dot]com</h1>
+    </section>   
+    
+</section> <!-- main -->
+
+</body>
+
+<?php require 'footer.phtml'; ?>

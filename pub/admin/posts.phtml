@@ -1,0 +1,53 @@
+<section class="admin-posts admin-main">
+    <h1 class="colored-heading blue">Posts</h1>
+    
+    <table class="table">
+        <tr>
+            <th></th><th>Status</th><th>Comments</th><th>Date</th>
+        </tr>       
+<?php   $trashCount = 0;
+        foreach ($this->posts as $p) { 
+            if ($p->the('status') != 'trash') { ?>
+        <tr id="<?= $p->the('id'); ?>">
+            <td><a href="/posts/<?= $p->the('slug'); ?>" alt="<?= $p->the('title'); ?>"><?= $p->the('title'); ?></a></td>
+            <td><?= $p->the('statuspicker'); ?></td>
+            <td><button class="btn btn-success comment-btn" data-toggle="button" data-disabled-text="Disabled" data-comment-status="<?= $p->the('comments'); ?>" onclick="$(this).button('disabled')">Enabled</button></td>
+            <td><?= $p->the('date'); ?> - <em><?= $p->the('time'); ?></em></td>
+        </tr>
+<?php       }
+            else { $trashCount++; }
+        } ?>       
+    </table>
+    
+    <hr />
+    
+<?php   if ($trashCount != 0) { ?>
+    
+    <div class="btn-group">
+        <button class="post-emptytrash btn btn-danger">Empty (<?= $trashCount; ?>) <i class="icon-white icon-trash"></i></button>
+        <button class="btn expander" data-toggle="collapse" data-target=".trash-bin" title="View Trash" onclick="$(this).button('toggle')"><i class="icon-plus"></i></button>      
+    </div>        
+    
+    <div class="collapse trash-bin">
+        <br />
+        <table class="table">
+            <tr>
+                <th></th><th>Status</th><th>Comments</th><th>Date</th>
+            </tr>
+<?php   foreach ($this->posts as $p) { 
+                if ($p->the('status') == 'trash') { ?>
+            <tr id="<?= $p->the('id'); ?>">
+                <td><?= $p->the('title'); ?></td>
+                <td><?= $p->the('statuspicker'); ?></td>
+                <td><button class="btn btn-danger" disabled="disabled">Disabled</button></td>
+                <td><?= $p->the('date'); ?> - <em><?= $p->the('time'); ?></em></td>
+            </tr>
+<?php       }
+            } ?>
+        </table>
+        
+        <hr />     
+    </div>  
+<?php   } ?> 
+    
+</section> <!-- admin-posts admin-main -->

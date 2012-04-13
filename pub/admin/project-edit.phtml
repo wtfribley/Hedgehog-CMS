@@ -1,0 +1,69 @@
+<?php require Template::GetPath() . 'header.phtml'; ?>
+
+<section class="editor-controls btn-toolbar">
+    <div data-editor-group="style" class="btn-group">
+	<button data-edit-action="strong" class="btn btn-small"><strong>B</strong></button>
+	<button data-edit-action="em" class="btn btn-small"><em>i</em></button>
+    </div>
+    <div data-editor-group="align" class="btn-group">
+	<button data-edit-action="align-left" class="btn btn-small"><i class="icon-align-left"></i></button>
+	<button data-edit-action="align-center" class="btn btn-small"><i class="icon-align-center"></i></button>
+	<button data-edit-action="align-right" class="btn btn-small"><i class="icon-align-right"></i></button>
+	<button data-edit-action="align-justify" class="btn btn-small"><i class="icon-align-justify"></i></button>
+    </div>
+    <div data-editor-group="formatting" class="btn-group">
+	<button data-edit-action="p" class="btn btn-small"><strong>p</strong></button>
+	<button data-edit-action="h1" class="btn btn-small"><strong>h1</strong></button>
+	<button data-edit-action="h2" class="btn btn-small"><strong>h2</strong></button>
+	<button data-edit-action="h3" class="btn btn-small"><strong>h3</strong></button>
+	<button data-edit-action="h4" class="btn btn-small"><strong>h4</strong></button>
+    </div>
+    <div data-editor-group="inserts" class="btn-group">
+	<button data-edit-action="link" class="btn btn-small">link</button>
+	<button data-edit-action="image" class="btn btn-small">image</button>
+    </div>
+    <div data-editor-group="publishing" class="btn-group">
+	<button data-edit-action="view-source" class="btn btn-small">html</button>
+	<button data-edit-action="publish" data-publish-url="<?= HOST; ?>/index" class="btn btn-success btn-small">publish</button>
+    </div>
+    <div class="popover top textcenter"><div class="arrow"></div><div class="popover-inner">
+        <h4 class="popover-title">Click Here to Confirm</h4>
+    </div></div></div>
+</section>
+
+<section class="project" data-project-id="<?= $project->the('id'); ?>">
+    <div class="project-media-container project-content"><?= $project->the('content'); ?></div>
+    <section class="project-info">
+<?php if (Template::Pagetype() == 'project') { ?>
+        
+        <h2 data-rte-field="title" contenteditable="true" data-editable-controls="style"><?= $project->the('title'); ?></h2>
+        
+<?php } else { ?>
+        
+        <h2><a href="/projects/<?= $project->the('slug'); ?>" title="<?= $project->the('title'); ?>"><?= $project->the('title'); ?></a></h2>
+        
+<?php } ?>
+        <h6 data-rte-field="roles" contenteditable="true"><?= $project->the('roles'); ?></h6>
+        
+        <div data-rte-field="description" contenteditable="true" data-editable-controls="all">
+        <?= $project->the('description'); ?>
+        </div>
+        <hr />
+        
+        <h6 data-rte-field="skills" contenteditable="true"><?= $project->the('skills'); ?></h6>
+        
+<?php if (Template::Pagetype() != 'project') { ?>
+        
+        <a href="/projects/<?= $project->the('slug'); ?>" title="View the Project's Page">view this project's page...</a>
+        
+<?php } ?>
+    </section>
+</section>
+
+<hr class="bigbottom-hr" />
+
+</section> <!-- main -->
+
+</body>
+
+<?php require Template::GetPath() . 'footer.phtml'; ?>
